@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Propuesta Comercial — Gravital</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:        #1a2228;
+    --bg2:       #222c33;
+    --bg3:       #29333e;
+    --border:    rgba(255,255,255,0.07);
+    --teal:      #2a9d8f;
+    --red:       #f33c2c;
+    --violet:    #9966ff;
+    --green:     #40b868;
+    --text:      #edf1f5;
+    --muted:     #8899a8;
+    --card:      #222c33;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(26,34,40,0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 5%;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 64px;
+  }
+  .logo {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 24px;
+    letter-spacing: 2px;
+    color: var(--text);
+    text-decoration: none;
+  }
+  .logo span { color: var(--teal); }
+  .nav-tag {
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  /* HERO */
+  .hero {
+    padding: 100px 5% 80px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .label {
+    display: inline-block;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--teal);
+    border: 1px solid var(--teal);
+    padding: 4px 12px;
+    border-radius: 2px;
+    margin-bottom: 28px;
+  }
+  h1 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: clamp(42px, 7vw, 80px);
+    line-height: 1;
+    letter-spacing: -1px;
+    margin-bottom: 24px;
+  }
+  h1 em { color: var(--teal); font-style: normal; }
+  .hero-sub {
+    font-size: 18px;
+    color: var(--muted);
+    max-width: 580px;
+    margin-bottom: 48px;
+  }
+  .meta-row {
+    display: flex; gap: 40px; flex-wrap: wrap;
+    border-top: 1px solid var(--border);
+    padding-top: 32px;
+  }
+  .meta-item { }
+  .meta-label { font-size: 11px; color: var(--muted); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 4px; }
+  .meta-value { font-size: 15px; font-weight: 500; }
+
+  /* SECTIONS */
+  section { padding: 80px 5%; }
+  .container { max-width: 900px; margin: 0 auto; }
+  h2 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: clamp(28px, 4vw, 42px);
+    letter-spacing: -0.5px;
+    margin-bottom: 40px;
+  }
+  h2 .accent { color: var(--teal); }
+  .divider {
+    width: 40px; height: 3px;
+    background: var(--teal);
+    margin-bottom: 20px;
+    border-radius: 2px;
+  }
+
+  /* SCOPE GRID */
+  .scope-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+  }
+  .scope-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 28px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.2s;
+  }
+  .scope-card:hover { border-color: var(--teal); }
+  .scope-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0;
+    width: 3px; height: 100%;
+    background: var(--teal);
+  }
+  .scope-card.red::before { background: var(--red); }
+  .scope-card.violet::before { background: var(--violet); }
+  .scope-card.green::before { background: var(--green); }
+  .scope-icon {
+    font-size: 28px;
+    margin-bottom: 14px;
+  }
+  .scope-card h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    margin-bottom: 10px;
+    letter-spacing: 0.5px;
+  }
+  .scope-card p { font-size: 14px; color: var(--muted); }
+  .tag-list { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 16px; }
+  .tag {
+    font-size: 11px;
+    padding: 3px 8px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    color: var(--muted);
+    letter-spacing: 1px;
+  }
+
+  /* INVESTMENT TABLE */
+  .inv-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 15px;
+  }
+  .inv-table th {
+    text-align: left;
+    padding: 12px 20px;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    border-bottom: 1px solid var(--border);
+  }
+  .inv-table td {
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--border);
+  }
+  .inv-table tr:last-child td { border-bottom: none; }
+  .inv-table tr:hover td { background: rgba(255,255,255,0.02); }
+  .price { font-weight: 500; color: var(--text); }
+  .total-row td {
+    border-top: 2px solid var(--teal) !important;
+    font-weight: 700;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 20px;
+    letter-spacing: 0.5px;
+    padding-top: 20px;
+  }
+  .total-row .price { color: var(--teal); font-size: 24px; }
+  .optional { color: var(--muted); font-size: 13px; }
+
+  /* TIMELINE */
+  .timeline { position: relative; padding-left: 28px; }
+  .timeline::before {
+    content: '';
+    position: absolute; left: 0; top: 0; bottom: 0;
+    width: 1px; background: var(--border);
+  }
+  .tl-item {
+    position: relative;
+    margin-bottom: 36px;
+    padding-left: 24px;
+  }
+  .tl-item::before {
+    content: '';
+    position: absolute; left: -34px; top: 4px;
+    width: 12px; height: 12px;
+    background: var(--teal);
+    border-radius: 50%;
+    border: 2px solid var(--bg);
+    outline: 1px solid var(--teal);
+  }
+  .tl-week {
+    font-size: 11px; color: var(--teal); letter-spacing: 2px;
+    text-transform: uppercase; margin-bottom: 4px;
+  }
+  .tl-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700; font-size: 18px;
+    margin-bottom: 6px;
+  }
+  .tl-desc { font-size: 14px; color: var(--muted); }
+
+  /* WHY SECTION */
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+  }
+  .why-item {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 24px;
+    text-align: center;
+  }
+  .why-item .num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 48px;
+    color: var(--teal);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .why-item p { font-size: 13px; color: var(--muted); }
+
+  /* CTA */
+  .cta-section {
+    background: var(--bg2);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    text-align: center;
+    padding: 80px 5%;
+  }
+  .cta-section h2 { margin-bottom: 16px; }
+  .cta-section p { color: var(--muted); margin-bottom: 40px; }
+  .btn {
+    display: inline-block;
+    background: var(--teal);
+    color: #fff;
+    padding: 14px 36px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 3px;
+    transition: background 0.2s, transform 0.1s;
+    margin: 6px;
+  }
+  .btn:hover { background: #23867a; transform: translateY(-1px); }
+  .btn.outline {
+    background: transparent;
+    border: 1px solid var(--teal);
+    color: var(--teal);
+  }
+  .btn.outline:hover { background: rgba(42,157,143,0.1); }
+
+  /* FOOTER */
+  footer {
+    padding: 32px 5%;
+    border-top: 1px solid var(--border);
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 12px;
+  }
+  footer .logo { font-size: 18px; }
+  footer p { font-size: 13px; color: var(--muted); }
+
+  /* UTILS */
+  .text-muted { color: var(--muted); }
+  .highlight { color: var(--teal); }
+  .sep { border: none; border-top: 1px solid var(--border); margin: 0; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="logo">GRAVI<span>TAL</span></a>
+  <span class="nav-tag">Propuesta Comercial · Confidencial</span>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="label">Propuesta N.° 2026-04</div>
+  <h1>Tu presencia<br>digital, <em>bien hecha.</em></h1>
+  <p class="hero-sub">
+    Desarrollo web en Angular con ChatBot integrado y módulo de Blog.
+    Una solución completa, escalable y lista para crecer con tu negocio.
+  </p>
+  <div class="meta-row">
+    <div class="meta-item">
+      <div class="meta-label">Cliente</div>
+      <div class="meta-value">Empresa Ejemplo S.A.S.</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Fecha</div>
+      <div class="meta-value">Abril 2026</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Vigencia</div>
+      <div class="meta-value">30 días</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Elaboró</div>
+      <div class="meta-value">Gravital · Equipo de Desarrollo</div>
+    </div>
+  </div>
+</div>
+
+<hr class="sep">
+
+<!-- ALCANCE -->
+<section>
+  <div class="container">
+    <div class="divider"></div>
+    <h2>Alcance del <span class="accent">proyecto</span></h2>
+    <div class="scope-grid">
+
+      <div class="scope-card">
+        <div class="scope-icon">⚡</div>
+        <h3>Web en Angular</h3>
+        <p>Sitio web corporativo de alto rendimiento con diseño personalizado, animaciones, SEO técnico y optimización de velocidad.</p>
+        <div class="tag-list">
+          <span class="tag">Angular 17</span>
+          <span class="tag">SSR</span>
+          <span class="tag">SEO</span>
+          <span class="tag">Responsive</span>
+        </div>
+      </div>
+
+      <div class="scope-card red">
+        <div class="scope-icon">🤖</div>
+        <h3>ChatBot Integrado</h3>
+        <p>Asistente conversacional para atención al cliente 24/7, calificación de leads y respuestas automáticas por IA.</p>
+        <div class="tag-list">
+          <span class="tag">IA generativa</span>
+          <span class="tag">Flows</span>
+          <span class="tag">WhatsApp</span>
+        </div>
+      </div>
+
+      <div class="scope-card violet">
+        <div class="scope-icon">✍️</div>
+        <h3>Módulo de Blog</h3>
+        <p>CMS headless con editor visual, categorías, etiquetas, imagen destacada y optimización SEO por artículo.</p>
+        <div class="tag-list">
+          <span class="tag">CMS headless</span>
+          <span class="tag">Editor visual</span>
+          <span class="tag">RSS</span>
+        </div>
+      </div>
+
+      <div class="scope-card green">
+        <div class="scope-icon">🔐</div>
+        <h3>Infraestructura y deploy</h3>
+        <p>Hosting, dominio, SSL, CI/CD y monitoreo incluidos durante el primer año. Zero downtime deployments.</p>
+        <div class="tag-list">
+          <span class="tag">Docker</span>
+          <span class="tag">CI/CD</span>
+          <span class="tag">SSL</span>
+          <span class="tag">Uptime 99.9%</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<hr class="sep">
+
+<!-- INVERSIÓN -->
+<section>
+  <div class="container">
+    <div class="divider"></div>
+    <h2>Inversión <span class="accent">requerida</span></h2>
+    <p class="text-muted" style="margin-bottom: 32px; font-size: 15px;">Todos los valores en COP. IVA no incluido.</p>
+
+    <table class="inv-table">
+      <thead>
+        <tr>
+          <th>Componente</th>
+          <th>Descripción</th>
+          <th>Valor</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Web Angular</strong></td>
+          <td class="text-muted">Diseño UI/UX, desarrollo frontend, hasta 8 secciones, formularios, integración de analytics</td>
+          <td class="price">$9.800.000</td>
+        </tr>
+        <tr>
+          <td><strong>ChatBot con IA</strong></td>
+          <td class="text-muted">Configuración de flujos, entrenamiento inicial, integración web y WhatsApp, panel de administración</td>
+          <td class="price">$4.500.000</td>
+        </tr>
+        <tr>
+          <td><strong>Módulo de Blog</strong></td>
+          <td class="text-muted">CMS headless, editor visual, hasta 3 categorías, migración de contenido existente (hasta 20 artículos)</td>
+          <td class="price">$2.800.000</td>
+        </tr>
+        <tr>
+          <td><strong>Infraestructura año 1</strong></td>
+          <td class="text-muted">Hosting, dominio .com, SSL, backups diarios, monitoreo 24/7, soporte técnico básico</td>
+          <td class="price">$1.200.000</td>
+        </tr>
+        <tr>
+          <td><span class="optional">Mantenimiento mensual</span></td>
+          <td class="text-muted optional">Actualizaciones, soporte, 4h de ajustes/mes <em>(opcional)</em></td>
+          <td class="price optional">$890.000/mes</td>
+        </tr>
+        <tr class="total-row">
+          <td colspan="2"><strong>TOTAL PROYECTO</strong></td>
+          <td class="price">$18.300.000</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p class="text-muted" style="margin-top: 20px; font-size: 13px;">
+      💡 <strong style="color: var(--text)">Forma de pago:</strong> 50% al iniciar · 30% al entregar diseños aprobados · 20% al go-live
+    </p>
+  </div>
+</section>
+
+<hr class="sep">
+
+<!-- CRONOGRAMA -->
+<section>
+  <div class="container">
+    <div class="divider"></div>
+    <h2>Cronograma <span class="accent">estimado</span></h2>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-week">Semanas 1 – 2</div>
+        <div class="tl-title">Kick-off & diseño UI/UX</div>
+        <div class="tl-desc">Reunión de inicio, definición de brand guidelines, wireframes y prototipos de alta fidelidad para aprobación del cliente.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-week">Semanas 3 – 5</div>
+        <div class="tl-title">Desarrollo frontend</div>
+        <div class="tl-desc">Implementación en Angular con diseño aprobado, integración de animaciones, formularios y conexión al CMS.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-week">Semana 6</div>
+        <div class="tl-title">ChatBot & Blog</div>
+        <div class="tl-desc">Configuración del asistente IA, flujos conversacionales, módulo de blog y migración de contenido.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-week">Semana 7</div>
+        <div class="tl-title">QA, ajustes finales & deploy</div>
+        <div class="tl-desc">Pruebas de rendimiento, accesibilidad, SEO técnico, ajustes de feedback y salida a producción.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-week">Post-lanzamiento</div>
+        <div class="tl-title">Soporte y estabilización</div>
+        <div class="tl-desc">2 semanas de soporte gratuito post-lanzamiento para correcciones y ajustes menores.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="sep">
+
+<!-- POR QUÉ GRAVITAL -->
+<section>
+  <div class="container">
+    <div class="divider"></div>
+    <h2>¿Por qué <span class="accent">Gravital</span>?</h2>
+    <div class="why-grid">
+      <div class="why-item">
+        <div class="num">8+</div>
+        <p>años construyendo productos digitales para empresas en Colombia y el mundo</p>
+      </div>
+      <div class="why-item">
+        <div class="num">60+</div>
+        <p>proyectos entregados en sectores como fintech, salud, educación y retail</p>
+      </div>
+      <div class="why-item">
+        <div class="num">7w</div>
+        <p>tiempo promedio de entrega para proyectos de alcance similar a este</p>
+      </div>
+      <div class="why-item">
+        <div class="num">100%</div>
+        <p>del equipo es senior. Sin juniors gestionando tu proyecto de forma independiente</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-section">
+  <div class="divider" style="margin: 0 auto 20px;"></div>
+  <h2>¿Listos para <span class="accent">empezar?</span></h2>
+  <p>Esta propuesta tiene vigencia de 30 días. Nos encantaría trabajar contigo.</p>
+  <a href="mailto:hola@gravital.co" class="btn">Aceptar propuesta</a>
+  <a href="mailto:hola@gravital.co" class="btn outline">Hacer una pregunta</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <a href="https://gravital.co" class="logo">GRAVI<span>TAL</span></a>
+  <p>hola@gravital.co &nbsp;·&nbsp; +57 (7) 697-7929 &nbsp;·&nbsp; Medellín, Colombia</p>
+  <p class="text-muted">Propuesta confidencial · Gravital © 2026</p>
+</footer>
+
+</body>
+</html>
